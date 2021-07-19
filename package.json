@@ -1,0 +1,26 @@
+{
+    "name": "fritzmon",
+    "version": "0.0.1",
+    "last_build": "2021-07-12T16:53:39.888Z",
+    "author": "Gernot H. Reichel <gernot.reichel@me.com>",
+    "private": true,
+    "scripts": {
+        "start": "node index",
+        "serve": "node_modules/nodemon/bin/nodemon.js"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.6"
+    },
+    "dependencies": {
+        "@influxdata/influxdb-client": "^1.15.0",
+        "dotenv": "^10.0.0",
+        "fritznode": "0.0.3"
+    },
+    "engines": {
+        "node": "^14"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nobio/fritzmon.git"
+    }
+}
