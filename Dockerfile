@@ -10,5 +10,8 @@ RUN npm install
 # Bundle app source
 COPY . .
 
+# Set process variables
+#ENV RUN_TIME=123     
+
 # start service
 CMD [ "npm", "start" ]
