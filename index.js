@@ -50,9 +50,13 @@ run = async () => {
     const conInflux = await connectInfluxDB();
 
     setInterval(async () => {
-        const usage = await bandwith(conFritz);
-        await write2InfluxDB(conInflux, usage);
-        console.log(usage)
+        try {
+            const usage = await bandwith(conFritz);
+            await write2InfluxDB(conInflux, usage);
+            console.log(usage)                
+        } catch (error) {
+            console.error(error);
+        }
     }, 5 * 1000);
 };
 
