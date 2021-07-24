@@ -1,4 +1,4 @@
-const Fritzbox  = require('fritznode');
+const Fritzbox = require('fritznode');
 const { Point } = require('@influxdata/influxdb-client')
 const { InfluxDB } = require('@influxdata/influxdb-client')
 
@@ -46,16 +46,20 @@ bandwith = async (con) => {
 }
 
 run = async () => {
-    const conFritz = await connectFritzBox();
-    const conInflux = await connectInfluxDB();
+    let conFritz = await connectFritzBox();
+    let conInflux = await connectInfluxDB();
 
     setInterval(async () => {
         try {
             const usage = await bandwith(conFritz);
             await write2InfluxDB(conInflux, usage);
-            console.log(usage)                
+            console.log(`\n${new Date().toISOString()}`);
+            console.log(usage)
         } catch (error) {
             console.error(error);
+            conFritz = await connectFritzBox();
+            conInflux = await connectInfluxDB();
+            console.log(`reconnecting...`);
         }
     }, 5 * 1000);
 };
