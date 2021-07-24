@@ -22,6 +22,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Available platforms
+      run: echo ${{ steps.buildx.outputs.platforms }}    
     - name: Fitzmon ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
