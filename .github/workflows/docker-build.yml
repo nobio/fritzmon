@@ -28,6 +28,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm install --only=production
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@master
+      with:
+        platforms: all
     - name: Login to DockerHub
       uses: docker/login-action@v1 
       with:
