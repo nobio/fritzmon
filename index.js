@@ -3,7 +3,10 @@ const { Point } = require('@influxdata/influxdb-client')
 const { InfluxDB } = require('@influxdata/influxdb-client')
 
 // configure from .env
-require('dotenv').config()
+require('dotenv').config();
+
+// cycle time
+const DELAY = process.env.DELAY || 5;
 
 connectFritzBox = async () => {
     return await Fritzbox.fritz();  // options are taken from process.env that are loaded from .env file
@@ -61,7 +64,7 @@ run = async () => {
             conInflux = await connectInfluxDB();
             console.log(`reconnecting...`);
         }
-    }, 5 * 1000);
+    }, DELAY * 1000);
 };
 
 run();
