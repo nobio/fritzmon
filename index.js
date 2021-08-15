@@ -83,7 +83,7 @@ run = async () => {
             await write2InfluxDB(conInflux, usage);
             //console.log(`\n${new Date().toISOString()}`);
             //console.log(usage);
-            console.log(`${new Date().toISOString()} -> Up ${Math.round(usage.factUp * 10000) / 100}%, Down ${Math.round(usage.factDown * 1000) / 100}%`);
+            console.log(`${new Date().toISOString()} -> Up ${Math.round(usage.factUp * 10000) / 100}%, Down ${Math.round(usage.factDown * 10000) / 100}%`);
         } catch (error) {
             console.error(error);
             conFritz = await connectFritzBox();
